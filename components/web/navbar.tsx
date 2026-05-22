@@ -8,16 +8,18 @@ import { useConvexAuth } from "convex/react";
 import { authClient } from "@/lib/auth-client";
 import { toast } from "sonner";
 import { useRouter } from "next/navigation";
+import { useTheme } from "next-themes";
 
 export function Navbar(){
     const {isAuthenticated,isLoading} = useConvexAuth();
     const router=useRouter();
+    const { theme } = useTheme();
     return (
         <nav className="fixed top-0 left-0 z-50 w-full  py-5 px-5 flex items-center justify-between bg-white dark:bg-black">
             <div className="flex items-center gap-8 ">
                 <div>
                     <Image
-                        src="/logo.svg"
+                        src={theme === "light" ? "/logo_black_text.svg" : "/logo.svg"}
                         alt="Logo"
                         width={190}
                         height={36}
@@ -60,7 +62,7 @@ export function Navbar(){
             </div> 
             <div className="flex items-center gap-2">
                 {isLoading ? null : isAuthenticated ? (
-                    <button  className={`${buttonVariants({})} bg-red-500 hover:text-black hover:bg-amber-50`} onClick={()=> authClient.signOut({
+                    <button  className={`${buttonVariants({})} bg-red-500 hover:text-black hover:bg-white`} onClick={()=> authClient.signOut({
                         fetchOptions:{
                             onSuccess: async ()=>{
                                 router.refresh();
@@ -77,7 +79,7 @@ export function Navbar(){
                 ):(
                     <>
                         <Link
-                            className={`${buttonVariants({})} bg-red-500 hover:text-white`}
+                            className={`${buttonVariants({})} bg-red-500 text-white`}
                             href="/auth/signup"
                         >
                             Sign up

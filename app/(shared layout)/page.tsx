@@ -1,10 +1,14 @@
+"use client";
+
 import Image from "next/image";
+import { useTheme } from "next-themes";
 
 export default function Home() {
+  const { theme } = useTheme();
   return(
     <div className="flex-row justify-center gap-y-10">
       <Image
-        src="/theme.png"
+        src={theme === "light" ? "/theme_white.png" : "/theme.png"}
         alt="Logo"
         width={1200}
         height={750}
