@@ -10,10 +10,13 @@ import { toast } from "sonner";
 import { useRouter } from "next/navigation";
 import { useTheme } from "next-themes";
 
-export function Navbar(){
-    const {isAuthenticated,isLoading} = useConvexAuth();
-    const router=useRouter();
+export function Navbar() {
+    const router = useRouter();
     const { theme } = useTheme();
+    const { isAuthenticated, isLoading } = useConvexAuth();
+    if (isLoading) {
+        return null;
+    }
     return (
         <nav className="fixed top-0 left-0 z-50 w-full  py-5 px-5 flex items-center justify-between bg-white dark:bg-black">
             <div className="flex items-center gap-8 ">
@@ -36,50 +39,50 @@ export function Navbar(){
                     </Link>
                     <Link
                         className={`${buttonVariants({ variant: "ghost" })} px-3 text-base border-b border-transparent pb-1 hover:text-red-500 hover:border-b-red-500`}
-                        href="/blog"
+                        href="/about"
                     >
                         About Us
                     </Link>
                     <Link
                         className={`${buttonVariants({ variant: "ghost" })} px-3 text-base border-b border-transparent pb-1 hover:text-red-500 hover:border-b-red-500`}
-                        href="/create"
+                        href="/events"
                     >
                         Events
                     </Link>
                     <Link
                         className={`${buttonVariants({ variant: "ghost" })} px-3 text-base border-b border-transparent pb-1 hover:text-red-500 hover:border-b-red-500`}
-                        href="/create"
+                        href="/speakers"
                     >
                         Speakers
                     </Link>
                     <Link
                         className={`${buttonVariants({ variant: "ghost" })} px-3 text-base border-b border-transparent pb-1 hover:text-red-500 hover:border-b-red-500`}
-                        href="/create"
+                        href="/buy"
                     >
                         Buy Now
                     </Link>
                 </div>
-            </div> 
+            </div>
             <div className="flex items-center gap-2">
-                {isLoading ? null : isAuthenticated ? (
-                    <button  className={`${buttonVariants({})} bg-red-500 hover:text-black hover:bg-white`} onClick={()=> authClient.signOut({
-                        fetchOptions:{
-                            onSuccess: async ()=>{
+                {isAuthenticated ? (
+                    <Link className={`${buttonVariants({})} bg-red-500 text-white hover:!text-black hover:!bg-black dark:hover:!text-red-500 dark:hover:!bg-white`} href="/" onClick={() => authClient.signOut({
+                        fetchOptions: {
+                            onSuccess: async () => {
                                 router.refresh();
                                 router.push("/");
                                 toast.success("Logged out successfully!");
                             },
-                            onError:()=>{
+                            onError: () => {
                                 toast.error("Error occurred while logging out!");
                             }
                         }
                     })}>
                         Log Out
-                    </button>
-                ):(
+                    </Link>
+                ) : (
                     <>
                         <Link
-                            className={`${buttonVariants({})} bg-red-500 text-white`}
+                            className={`${buttonVariants({})} bg-red-500 text-white hover:!text-black hover:!bg-black dark:hover:!text-red-500 dark:hover:!bg-white`}
                             href="/auth/signup"
                         >
                             Sign up

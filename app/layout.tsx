@@ -5,11 +5,11 @@ import { ThemeProvider } from "@/components/ui/theme-provider"
 import { ConvexClientProvider } from "@/components/web/ConvexClientProvider";
 import { Toaster } from "@/components/ui/sonner";
 const geistSans = Geist({
-  subsets: ["latin"],
+  subsets: ["latin"]
 });
 
 const geistMono = Geist_Mono({
-  subsets: ["latin"],
+  subsets: ["latin"]
 });
 
 export const metadata: Metadata = {
@@ -26,17 +26,17 @@ export default function RootLayout({
     <html
       lang="en" suppressHydrationWarning
     >
-      <body className={`${geistSans.className} ${geistMono.className}  antialiased ` }>
+      <body className={`${geistSans.className} ${geistMono.className}  antialiased `}>
         <ThemeProvider
-            attribute="class"
-            defaultTheme="system"
-            enableSystem
-            disableTransitionOnChange
-          >
-            <main className="w-full">
-              <ConvexClientProvider>{children}</ConvexClientProvider>
-            </main>
-            <Toaster closeButton/>
+          attribute="class"
+          defaultTheme="system"
+          enableSystem
+          disableTransitionOnChange
+        >
+          <main className="w-full">
+            <ConvexClientProvider>{children}</ConvexClientProvider>
+          </main>
+          <Toaster closeButton />
         </ThemeProvider>
       </body>
     </html>
