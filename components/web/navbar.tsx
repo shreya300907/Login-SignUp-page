@@ -65,7 +65,7 @@ export function Navbar() {
             </div>
             <div className="flex items-center gap-2">
                 {isAuthenticated ? (
-                    <Link className={`${buttonVariants({})} bg-red-500 text-white hover:!text-black hover:!bg-black dark:hover:!text-red-500 dark:hover:!bg-white`} href="/" onClick={() => authClient.signOut({
+                    <Link className={`${buttonVariants({})} bg-red-500 text-white hover:!text-white hover:!bg-black dark:hover:!text-red-500 dark:hover:!bg-white`} href="/" onClick={() => authClient.signOut({
                         fetchOptions: {
                             onSuccess: async () => {
                                 router.refresh();
@@ -82,7 +82,7 @@ export function Navbar() {
                 ) : (
                     <>
                         <Link
-                            className={`${buttonVariants({})} bg-red-500 text-white hover:!text-black hover:!bg-black dark:hover:!text-red-500 dark:hover:!bg-white`}
+                            className={`${buttonVariants({})} bg-red-500 text-white hover:!text-white hover:!bg-black dark:hover:!text-red-500 dark:hover:!bg-white`}
                             href="/auth/signup"
                         >
                             Sign up

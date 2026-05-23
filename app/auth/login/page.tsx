@@ -129,10 +129,10 @@ export default function LoginPage() {
                                 {isPending ? (
                                     <>
                                         <Loader2 className="size-4 animate-spin" />
-                                        <span>Signing in..</span>
+                                        <span className="hover:text-black">Signing in..</span>
                                     </>
                                 ) : (
-                                    <span>Login</span>)}
+                                    <span className="hover:text-black">Login</span>)}
                             </Button>
                         </div>
                     </FieldGroup>
