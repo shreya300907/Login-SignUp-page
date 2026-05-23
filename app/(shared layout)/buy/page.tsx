@@ -12,10 +12,10 @@ export default async function BuyPage() {
     return (
         <div className="min-h-screen flex flex-col items-center justify-center px-6 py-20">
             <div className="text-center mb-14">
-                <h1 className="text-4xl font-bold text-white">
+                <h1 className="text-4xl font-bold text-black dark:text-white">
                     What We Offer
                 </h1>
-                <p className="mt-6 text-l text-gray-200">
+                <p className="mt-6 text-l text-black dark:text-gray-200">
                     Experience TEDxIITPatna through our exclusive offerings
                 </p>
             </div>
