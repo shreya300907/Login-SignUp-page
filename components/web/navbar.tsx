@@ -79,7 +79,7 @@ export function Navbar(){
                 ):(
                     <>
                         <Link
-                            className={`${buttonVariants({})} bg-red text-white`}
+                            className={`${buttonVariants({})} bg-red-500 text-white`}
                             href="/auth/signup"
                         >
                             Sign up
